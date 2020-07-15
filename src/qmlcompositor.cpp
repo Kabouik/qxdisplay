@@ -43,13 +43,18 @@
 #include <QWaylandSurfaceInterface>
 #include <QQuickView>
 
-QmlCompositor::QmlCompositor(QQuickView *quickView, const char *socketName)
+QmlCompositor::QmlCompositor(QQuickView *quickView, const char *socketName, const char *screenOrientationOption)
     : QObject(quickView)
     , QWaylandQuickCompositor(quickView, socketName, DefaultExtensions | SubSurfaceExtension)
     , m_fullscreenSurface(0)
 {
     QSize size = window()->size();
-    setSize(size.height(), size.width());
+    if ( strncmp(screenOrientationOption, "landscape", 1) == 0 ){
+        setSize(size.height(), size.width());
+    } else {
+        printf("else");
+        setSize(size.width(), size.height());
+    }
     addDefaultShell();
 }
 

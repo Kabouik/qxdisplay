@@ -47,11 +47,11 @@ import QXCompositor 1.0
 
 Item {
     id: container
-    width: parent.width
-    height: parent.height
+    anchors.fill: parent
     z: 1
 
     Component.onCompleted: {
+
         compositor.fullscreenSurface = child.surface
 
         if (sshUserOption && sshPortOption) {
