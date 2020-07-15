@@ -46,16 +46,22 @@ Page {
     id: root
     objectName: "firstPage"
 
+    Image {
+        id: hintLogo
+        anchors.centerIn: parent
+        source: "../images/sailfishcontainers.png"
+    }
+
     Label {
         id: hintLabel
-        anchors.centerIn: parent
-        text: "No Xwayland window"
+        anchors.bottom: hintLogo.bottom
+        text: "Waiting Xwayland window..."
+        anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: Theme.fontSizeLarge
     }
 
     property variant selectedWindow: null
     property bool hasFullscreenWindow: typeof compositor != "undefined" && compositor.fullscreenSurface !== null
-
 
     function windowAdded(window) {
         var windowContainerComponent = Qt.createComponent("../compositor/XWaylandContainer.qml");
@@ -73,6 +79,7 @@ Page {
         windowContainer.child.touchEventsEnabled = true;
 
         hintLabel.visible = false
+        hintLogo.visible = false
 
         root.selectedWindow = windowContainer.child
         windowContainer.child.takeFocus()

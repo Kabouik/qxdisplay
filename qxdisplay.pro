@@ -35,10 +35,11 @@ SOURCES += \
 
 OTHER_FILES += \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
+    qml/pages/FirstPage.qml
 
 DISTFILES += \
     qml/compositor/XWaylandContainer.qml \
+    qml/images/sailfishcontainers.png \
     qml/qxcompositor.qml \
     rpm/qxdisplay.changes.in \
     rpm/qxdisplay.spec
