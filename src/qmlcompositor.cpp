@@ -52,7 +52,6 @@ QmlCompositor::QmlCompositor(QQuickView *quickView, const char *socketName, cons
     if ( strncmp(screenOrientationOption, "landscape", 1) == 0 ){
         setSize(size.height(), size.width());
     } else {
-        printf("else");
         setSize(size.width(), size.height());
     }
     addDefaultShell();
